@@ -1,0 +1,35 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+
+.wrapper{
+    width: 1000px;
+    height: 1000px;
+}
+
+.header{
+    width: 1000px;
+    height: 50px;
+    display: inline-block;
+    text-align: right;
+}
+
+.user_info{
+    width: 1000px;
+    height: 600px;
+    margin: 5px;
+}
+
+.comment{
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.comment a{
+    font-size: 10px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login and Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'userQuotes/css/index.css' %}">
+
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Login and Registration</h1>
+        <div class="registration_field">
+            <form class="registration_form" action='/registration' method='POST'>
+                {% csrf_token %}
+                <h2>Registration</h2>
+                First Name:<input type="text" name="first_name">
+                Last Name:<input type="text" name="last_name">
+                Email:<input type="text" name="email">
+                Password:<input type="password" name="password">
+                Confirm Password:<input type="password" name="password_check">
+                <input type="submit" value="Register">
+            </form>
+            {% if messages %}
+            {% for message in messages %}
+                <ul class="messages">
+                    <li>{{ message }}</li>
+                </ul>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="login_field">
+            <h2>Login</h2>
+            <form class="login" action='/login' method='POST'>
+                {% csrf_token %}
+                Email:<input type="text" name="email">
+                Password:<input type="password" name="password">
+                <input type="submit" value="login">
+            </form>
+        </div>
+    </div>
+
+        
+</body>
+</html>

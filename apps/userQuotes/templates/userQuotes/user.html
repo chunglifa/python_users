@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="{% static 'userQuotes/css/user.css' %}">
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a href="/welcome">Back</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="user_info">
+            <h1>{{user.first_name}} {{user.last_name}}'s Quotes</h1>
+            <p>Total Quotes:</p>
+            <!-- BRs temporary, take out or add as div -->
+            <br>
+            <br>
+            <div class="quotes">
+                <h3>Posted Quotes:</h3>
+                    {% for i in quotes%}
+                    <div class="comment">
+                        <h4>{{i.content}}</h4>
+                        <h6>Author: {{i.author}}</h6>
+                        {% csrf_token %}
+                        <p>{{i.likes.count}} people like this
+                        {% if i.uploader_id == request.session.id %}
+                        <br>
+                        <a href="codingdojo.com">Delete Review</a>
+                        {% endif %}
+                    </div>
+
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

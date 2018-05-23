@@ -1,0 +1,30 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+.header{
+    width: 1000px;
+    height: 50px;
+    display: inline-block;
+    text-align: right;
+}
+
+
+.userform{
+    width: 200px;
+    height: 400px;
+    display: inline-block;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.userform input{
+    display: inline;
+}
+.userform input name{
+    width: 100px;
+    margin-left: 40px;
+}

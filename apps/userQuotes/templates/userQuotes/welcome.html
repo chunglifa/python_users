@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Book View</title>
+    <link rel="stylesheet" href="{% static 'userQuotes/css/welcome.css' %}">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <a href="/myaccount/{{user.id}}">Edit My Account</a>
+            <a href="/logout">Logout</a>
+        </div>
+        <div class="book_left">
+            <div class="book_info">
+                <h1>Welcome {{user.first_name}}!</h1>
+            </div>
+            <div class="review_case">
+                <h3>Quotes:</h3>
+                <div class="reviews">
+                    {% for i in quotes%}
+                    <div class="comment">
+                        <h4>{{i.content}}</h4>
+                        <h6>{{i.author}}</h6>
+                        <p>Posted by:  <a href="/users/{{i.uploader_id}}"> {{i.uploader.first_name}} {{i.uploader.last_name}}</p></a>
+                        {% csrf_token %}
+                        <div class="rating_box">
+                            <p>{{i.likes.count}} people like this
+                                <form class="like" action='/like' method='POST'>
+                                {% csrf_token %}
+                                <input type="hidden" name="user_id" value="{{user.id}}">
+                                <input type="hidden" name="quote_id" value="{{i.id}}">
+                                <input type="submit" value="Like">
+                                </form>
+                        {% if i.uploader_id == request.session.id %}
+                        <a href="/delete/{{i.id}}">Delete Review</a>
+                        {% endif %}
+
+                            </p>
+                        </div>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="book_right">
+            <h3>Add a Quote!</h3>
+            <form class="add_quote" action='/add_quote' method='POST'>
+                {% csrf_token %}
+                Author:
+                <input type="text" name="author">
+                <br>
+                Quote:
+                <textarea name="quote" placeholder="Be Legendary*"></textarea>
+                <input type="submit" class="ripple" value="Add Review" />
+            </form>
+        </div>
+    </div>
+</body>
+
+
+</html>

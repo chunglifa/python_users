@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="{% static 'userQuotes/css/edit.css' %}">
+
+</head>
+<body>
+    <div class="header">
+            <a href="/welcome">Back</a>
+            <a href="/logout">Logout</a>
+    </div>
+    <h1>Edit {{user.first_name}}</h1>
+        <div class="formwrapper">
+            <form class="userform" action='/update' method='POST'>
+                {% csrf_token %}
+                First Name:<input type="text" name="first_name" placeholder={{user.first_name}}>
+                Last Name:<input type="text" name="last_name" placeholder={{user.last_name}}>
+                Email:<input type="text" name="email" placeholder={{user.email}}>
+                <input type="hidden" name="id" value="{{user.id}}">
+                <br>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+</body>
+</html>

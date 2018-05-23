@@ -1,0 +1,53 @@
+/*CSS reset settings here*/
+*{
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
+}
+
+
+.wrapper{
+    width: 1000px;
+    height: 1000px;
+}
+
+.header{
+    width: 1000px;
+    height: 50px;
+    display: inline-block;
+    text-align: right;
+}
+
+.book_left{
+    width: 500px;
+    height: 800px;
+    display: inline-block;
+}
+
+.book_right{
+    width: 350px;
+    height: 800px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 85px;
+}
+
+h3{
+    border-bottom: 1px solid black;
+}
+
+.review_case{
+    margin-top: 30px;
+}
+.reviews{
+    border-bottom: 1px solid black;
+    line-height: 30px;
+}
+
+.book_right textarea{
+    width: 300px;
+    height: 75px;
+    margin-top: 10px;
+}
+
+
